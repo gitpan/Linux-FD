@@ -1,0 +1,36 @@
+---
+name: Linux-FD
+version: 0.001
+author:
+  - 'Leon Timmermans <leont@cpan.org>'
+abstract: Linux specific special filehandles
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+build_requires:
+  Test::Exception: 0
+  Test::More: 0
+requires:
+  Const::Fast: 0
+  Sub::Exporter: 0
+  parent: 0
+  perl: 5.006
+configure_requires:
+  Module::Build: 0.340201
+provides:
+  Linux::FD:
+    file: lib/Linux/FD.pm
+    version: 0.001
+  Linux::FD::Event:
+    file: lib/Linux/FD/Event.pm
+    version: 0.001
+  Linux::FD::Signal:
+    file: lib/Linux/FD/Signal.pm
+    version: 0.001
+  Linux::FD::Timer:
+    file: lib/Linux/FD/Timer.pm
+    version: 0.001
+generated_by: Module::Build version 0.340201
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4

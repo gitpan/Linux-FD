@@ -1,0 +1,40 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.61.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 f1153c8a7f9473d69d7d2b7a7a6a008c007a781c Build.PL
+SHA1 379e50c39a78eae6d6f639b3a5618cb2892131a1 Changes
+SHA1 1b74633d8b64602637da1521c733e3332ddc5a0c MANIFEST
+SHA1 a47a829132003a23696a9e2569886d0d7f07dbd3 META.yml
+SHA1 a61d719b42c86cc2c31203a53369babc4db8d8f6 Makefile.PL
+SHA1 5aff352ba44612f6dceb54ae3e793c5a8452aec5 README
+SHA1 62e0a6e07344d6ddd056f838f806f2aa7010a67a lib/Linux/FD.pm
+SHA1 dcba2aed66e54e2f247042e7b4b86b0c66c1420e lib/Linux/FD.xs
+SHA1 473dc2fe4d24871ceb788417430a8cd85e69d7a9 lib/Linux/FD/Event.pm
+SHA1 89e0fd904c1a3773d6c0af7a6af1866d0f02b65d lib/Linux/FD/Signal.pm
+SHA1 876d54ffd892eac6b174600b5a74d1e35676b907 lib/Linux/FD/Timer.pm
+SHA1 531ea090827c012b9d79d280e4ae8d1d8f1982cb t/00-load.t
+SHA1 e92faa2a9f2a614d3c3f2ebf48c621c45018cef7 t/10-events.t
+SHA1 36c4ef3d93a065fef50bd779deef65cfd3c59c30 t/10-signals.t
+SHA1 161520e0eb54fb5f58dd7887e796c30d0d9042d0 t/10-timers.t
+SHA1 0b1c5a2d59be6bfa7d60c64cd964fea6a0331705 t/pod-coverage.t
+SHA1 640935336dc1123c0069bcf5432bcaedc2cf22d3 t/pod.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.10 (GNU/Linux)
+
+iEYEARECAAYFAkyXl44ACgkQTd+EWiaICwrtMQCfbLVtGOHD2nfOsXuRPnyZ1wVS
+CcYAoKllqJG+mP6TWV/1qjCa32woaDfo
+=f0o1
+-----END PGP SIGNATURE-----
