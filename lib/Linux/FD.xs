@@ -82,6 +82,10 @@ void non_blocking(int fd) {
 #define TFD_CLOEXEC 0
 #endif
 
+#define SET_HASH_IMPL(key,value) hv_store(hash, key, sizeof key - 1, value, 0)
+#define SET_HASH_U(key) SET_HASH_IMPL(#key, newSVuv(buffer.ssi_##key))
+#define SET_HASH_I(key) SET_HASH_IMPL(#key, newSViv(buffer.ssi_##key))
+
 MODULE = Linux::FD				PACKAGE = Linux::FD::Event
 
 int
@@ -90,6 +94,50 @@ _new_fd(initial)
 	CODE:
 		RETVAL = eventfd(initial, EFD_CLOEXEC);
 		non_blocking(RETVAL);
+	OUTPUT:
+		RETVAL
+
+IV
+get(self)
+	SV* self;
+	PREINIT:
+		uint64_t buffer;
+		int ret, events;
+	CODE:
+		events = get_fd(self);
+		do {
+			ret = read(events, &buffer, sizeof buffer);
+		} while (ret == -1 && errno == EINTR);
+		if (ret == -1) {
+			if (errno == EAGAIN)
+				XSRETURN_EMPTY;
+			else
+				die_sys("Couldn't read from eventfd: %s");
+		}
+		RETVAL = buffer;
+	OUTPUT:
+		RETVAL
+
+IV
+add(self, value)
+	SV* self;
+	IV value;
+	PREINIT:
+		uint64_t buffer;
+		int ret, events;
+	CODE:
+		events = get_fd(self);
+		buffer = value;
+		do {
+			ret = write(events, &buffer, sizeof buffer);
+		} while (ret == -1 && errno == EINTR);
+		if (ret == -1) {
+			if (errno == EAGAIN)
+				XSRETURN_EMPTY;
+			else
+				die_sys("Couldn't write to eventfd: %s");
+		}
+		RETVAL = value;
 	OUTPUT:
 		RETVAL
 
@@ -114,6 +162,45 @@ void set_mask(self, sigmask)
 	fd = get_fd(self);
 	if(signalfd(fd, sv_to_sigset(sigmask), 0) == -1)
 		die_sys("Couldn't set_mask: %s");
+
+SV*
+receive(self)
+	SV* self;
+	PREINIT:
+		struct signalfd_siginfo buffer;
+		int tmp, timer;
+		HV* hash;
+	CODE:
+		timer = get_fd(self);
+		do {
+			tmp = read(timer, &buffer, sizeof buffer);
+		} while (tmp == -1 && errno == EINTR);
+		if (tmp == -1) {
+			if (errno == EAGAIN)
+				XSRETURN_EMPTY;
+			else
+				die_sys("Couldn't read from signalfd: %s");
+		}
+		hash = newHV();
+		SET_HASH_U(signo);
+		SET_HASH_I(errno);
+		SET_HASH_I(code);
+		SET_HASH_U(pid);
+		SET_HASH_U(uid);
+		SET_HASH_I(fd);
+		SET_HASH_U(tid);
+		SET_HASH_U(band);
+		SET_HASH_U(overrun);
+		SET_HASH_U(trapno);
+		SET_HASH_I(status);
+		SET_HASH_I(int);
+		SET_HASH_U(ptr);
+		SET_HASH_U(utime);
+		SET_HASH_U(stime);
+		SET_HASH_U(addr);
+		RETVAL = newRV_noinc((SV*)hash);
+	OUTPUT:
+		RETVAL
 
 
 MODULE = Linux::FD				PACKAGE = Linux::FD::Timer
@@ -153,7 +240,7 @@ set_timeout(self, new_value, new_interval = 0, abstime = 0)
 	PREINIT:
 		int timer;
 		struct itimerspec new_itimer, old_itimer;
-	CODE:
+	PPCODE:
 		timer = get_fd(self);
 		nv_to_timespec(new_value, &new_itimer.it_value);
 		nv_to_timespec(new_interval, &new_itimer.it_interval);
@@ -162,3 +249,25 @@ set_timeout(self, new_value, new_interval = 0, abstime = 0)
 		mXPUSHn(timespec_to_nv(&old_itimer.it_value));
 		if (GIMME_V == G_ARRAY)
 			mXPUSHn(timespec_to_nv(&old_itimer.it_interval));
+
+IV
+receive(self)
+	SV* self;
+	PREINIT:
+		uint64_t buffer;
+		int ret, timer;
+	CODE:
+		timer = get_fd(self);
+		do {
+			ret = read(timer, &buffer, sizeof buffer);
+		} while (ret == -1 && errno == EINTR);
+		if (ret == -1) {
+			if (errno == EAGAIN)
+				XSRETURN_EMPTY;
+			else
+				die_sys("Couldn't read from timerfd: %s");
+		}
+		RETVAL = buffer;
+	OUTPUT:
+		RETVAL
+
