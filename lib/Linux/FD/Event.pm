@@ -6,10 +6,11 @@ use strict;
 use warnings FATAL => 'all';
 use Carp qw/croak/;
 use Const::Fast;
+use Linux::FD ();
 
 use parent 'IO::Handle';
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 const my $fail_fd => -1;
 
@@ -30,11 +31,11 @@ __END__
 
 =head1 NAME
 
-Linux::FD::Event - Event filehandles
+Linux::FD::Event - Event filehandles for Linux
 
 =head1 VERSION
 
-Version 0.002
+Version 0.004
 
 =head1 SYNOPSIS
 
@@ -52,7 +53,7 @@ Version 0.002
 
 =head2 new($initial_value)
 
-This creates an eventfd object that can be used as an event wait/notify mechanism by userspace applications, and by the kernel to notify userspace applications of events. The object contains an unsigned 64-bit integer counter that is maintained by the kernel. This counter is initialized with the value specified in the argument $initial_value. The handle will be non-blocking by default.
+This creates an eventfd object that can be used as an event wait/notify mechanism by userspace applications, and by the kernel to notify userspace applications of events. The object contains an unsigned 64-bit integer counter that is maintained by the kernel. This counter is initialized with the value specified in the argument $initial_value.
 
 =head2 get()
 

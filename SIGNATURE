@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.61.
+signed via the Module::Signature module, version 0.63.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -15,27 +15,27 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 a38c6c0eca7083e47587486c9e6bb6b99a29a831 Build.PL
-SHA1 2ff1c4023f63a44eb58cfd01e9010ae6ee9c7f6a Changes
+SHA1 84773095197b74fa773ce5a635cb8c0244c0ed50 Changes
 SHA1 9e627682091372eabbb50d3af3404656d87eb080 LICENSE
 SHA1 0dbde08ae6eabe60388b8cbef610ed73f46ba28c MANIFEST
-SHA1 77ac159c7ea2f2766a4cb3a43270934c1d4df71c META.yml
-SHA1 a61d719b42c86cc2c31203a53369babc4db8d8f6 Makefile.PL
+SHA1 cf6d6fa37e9d421fa22ac09f644a3c686632609f META.yml
+SHA1 1c950294311e0f07e5e47c80e1632fc0de589298 Makefile.PL
 SHA1 5aff352ba44612f6dceb54ae3e793c5a8452aec5 README
-SHA1 2c2564848bdb34739f74b68a825c452b98f071f6 lib/Linux/FD.pm
-SHA1 3a0f6a5c66a32d1fd7c414df901e0fde2c97d049 lib/Linux/FD.xs
-SHA1 0c901a8d5f23a4f1377fce51f92ca8bf5cb0ecca lib/Linux/FD/Event.pm
-SHA1 22e57809aeafa1a6dbf877cf641fa8c4737478e5 lib/Linux/FD/Signal.pm
-SHA1 b5366cba828a9715d29665cae766592d9836cc66 lib/Linux/FD/Timer.pm
+SHA1 da21a513675a83ab660ba0282561590865200e49 lib/Linux/FD.pm
+SHA1 1c02e7cb2d7625e60734959404730264799c4a71 lib/Linux/FD.xs
+SHA1 c2f9d3a7a5c9cf53a921da893f4d3f48b8ed6f44 lib/Linux/FD/Event.pm
+SHA1 1b755a13545691ddc86ad49732b873db934285a1 lib/Linux/FD/Signal.pm
+SHA1 5be261d1d8a9cb0024088189eeb9a902852fa162 lib/Linux/FD/Timer.pm
 SHA1 531ea090827c012b9d79d280e4ae8d1d8f1982cb t/00-load.t
-SHA1 e92faa2a9f2a614d3c3f2ebf48c621c45018cef7 t/10-events.t
-SHA1 36c4ef3d93a065fef50bd779deef65cfd3c59c30 t/10-signals.t
-SHA1 5c50b1b4980d242443e412caca3268c266a22a19 t/10-timers.t
+SHA1 32317cb746d63bb6fe5a9383024a61e9c657cf33 t/10-events.t
+SHA1 a9890be97e3bc7dda260e5888b1f4102528362ff t/10-signals.t
+SHA1 bd5cff0f9634d244bf3841760d2c1f6d0ee16536 t/10-timers.t
 SHA1 0b1c5a2d59be6bfa7d60c64cd964fea6a0331705 t/pod-coverage.t
 SHA1 640935336dc1123c0069bcf5432bcaedc2cf22d3 t/pod.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 
-iEYEARECAAYFAkzLA0AACgkQTd+EWiaICwr8LgCghUD9J8wIx07FgZOb+jehkT91
-EskAn2l0YW9Y4mwjGs00UKLcACqcUWap
-=ucgS
+iEYEARECAAYFAkz62/oACgkQTd+EWiaICwo0hgCgmoK2sM+Eu9nr+UsgD6PBnUps
+IrAAoKNsOhob/LevDfcUK477Ayb/ou2Q
+=R5K/
 -----END PGP SIGNATURE-----

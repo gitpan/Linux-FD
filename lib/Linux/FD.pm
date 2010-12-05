@@ -5,29 +5,28 @@ use 5.006;
 use strict;
 use warnings FATAL => 'all';
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 use Sub::Exporter -setup => { exports => [qw/eventfd signalfd timerfd/] };
 
 use XSLoader;
 XSLoader::load(__PACKAGE__, $VERSION);
 
-use Linux::FD::Event;
-use Linux::FD::Signal;
-use Linux::FD::Timer;
-
 sub eventfd {
 	my @args = @_;
+	require Linux::FD::Event;
 	return Linux::FD::Event->new(@args);
 }
 
 sub signalfd {
 	my @args = @_;
+	require Linux::FD::Signal;
 	return Linux::FD::Signal->new(@args);
 }
 
 sub timerfd {
 	my @args = @_;
+	require Linux::FD::Timer;
 	return Linux::FD::Timer->new(@args);
 }
 
@@ -41,7 +40,7 @@ Linux::FD - Linux specific special filehandles
 
 =head1 VERSION
 
-Version 0.002
+Version 0.004
 
 =head1 DESCRIPTION
 

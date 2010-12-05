@@ -31,7 +31,7 @@ static void S_die_sys(pTHX_ const char* format) {
 sigset_t* S_sv_to_sigset(pTHX_ SV* sigmask) {
 	if (!SvOK(sigmask))
 		return NULL;
-	if (!SvROK(sigmask) || !sv_isa(sigmask, "POSIX::SigSet"))
+	if (!SvROK(sigmask) || !sv_isobject(sigmask) || !sv_derived_from(sigmask, "POSIX::SigSet"))
 		Perl_croak(aTHX_ "sigset is not of type POSIX::SigSet");
 	IV tmp = SvIV((SV*)SvRV(sigmask));
 	return INT2PTR(sigset_t*, tmp);
@@ -66,10 +66,6 @@ static clockid_t S_get_clockid(pTHX_ const char* clock_name) {
 }
 #define get_clockid(name) S_get_clockid(aTHX_ name)
 
-void non_blocking(int fd) {
-	fcntl(fd, F_SETFL, O_NONBLOCK);
-}
-
 #ifndef EFD_CLOEXEC
 #define EFD_CLOEXEC 0
 #endif
@@ -93,7 +89,6 @@ _new_fd(initial)
 	IV initial;
 	CODE:
 		RETVAL = eventfd(initial, EFD_CLOEXEC);
-		non_blocking(RETVAL);
 	OUTPUT:
 		RETVAL
 
@@ -149,7 +144,6 @@ _new_fd(sigmask)
 	SV* sigmask;
 	CODE:
 		RETVAL = signalfd(-1, sv_to_sigset(sigmask), SFD_CLOEXEC);
-		non_blocking(RETVAL);
 	OUTPUT:
 		RETVAL
 
@@ -213,7 +207,6 @@ _new_fd(clock_name)
 	CODE:
 		clock_id = get_clockid(clock_name);
 		RETVAL = timerfd_create(clock_id, TFD_CLOEXEC);
-		non_blocking(RETVAL);
 	OUTPUT:
 		RETVAL
 

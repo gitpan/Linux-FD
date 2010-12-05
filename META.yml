@@ -1,40 +1,40 @@
 ---
-name: Linux-FD
-version: 0.003
+abstract: 'Linux specific special filehandles'
 author:
   - 'Leon Timmermans <leont@cpan.org>'
-abstract: Linux specific special filehandles
-license: perl
-resources:
-  bugtracker: http://rt.cpan.org/NoAuth/Bugs.html?Dist=Linux-FD
-  license: http://dev.perl.org/licenses/
-  repository: http://github.com/Leont/linux-fd
 build_requires:
   ExtUtils::CBuilder: 0
   Module::Build: 0.28
   Test::More: 0
+configure_requires:
+  Module::Build: 0.28
+generated_by: 'Module::Build version 0.3607'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Linux-FD
+provides:
+  Linux::FD:
+    file: lib/Linux/FD.pm
+    version: 0.004
+  Linux::FD::Event:
+    file: lib/Linux/FD/Event.pm
+    version: 0.004
+  Linux::FD::Signal:
+    file: lib/Linux/FD/Signal.pm
+    version: 0.004
+  Linux::FD::Timer:
+    file: lib/Linux/FD/Timer.pm
+    version: 0.004
 requires:
   Const::Fast: 0
   IPC::Signal: 0
   Sub::Exporter: 0
   parent: 0
   perl: 5.006
-configure_requires:
-  Module::Build: 0.28
-provides:
-  Linux::FD:
-    file: lib/Linux/FD.pm
-    version: 0.003
-  Linux::FD::Event:
-    file: lib/Linux/FD/Event.pm
-    version: 0.003
-  Linux::FD::Signal:
-    file: lib/Linux/FD/Signal.pm
-    version: 0.003
-  Linux::FD::Timer:
-    file: lib/Linux/FD/Timer.pm
-    version: 0.003
-generated_by: Module::Build version 0.340201
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+resources:
+  bugtracker: http://rt.cpan.org/NoAuth/Bugs.html?Dist=Linux-FD
+  license: http://dev.perl.org/licenses/
+  repository: http://github.com/Leont/linux-fd
+version: 0.004

@@ -6,10 +6,11 @@ use strict;
 use warnings FATAL => 'all';
 use Carp qw/croak/;
 use Const::Fast;
+use Linux::FD ();
 
 use parent 'IO::Handle';
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 const my $fail_fd => -1;
 
@@ -33,7 +34,7 @@ Linux::FD::Timer - Timer filehandles for Linux
 
 =head1 VERSION
 
-Version 0.002
+Version 0.004
 
 =head1 SYNOPSIS
 
@@ -54,7 +55,7 @@ This module creates and operates on a timer that delivers timer expiration notif
 
 =head2 new($clockid)
 
-This creates a new timer object, and returns a file handle that refers to that timer. The clockid argument specifies the clock that is used to mark the progress of the timer, and must be either C<'realtime'> or C<'monotonic'>. C<realtime> is a settable system-wide clock. C<monotonic> is a non-settable clock that is not affected by discontinuous changes in the system clock (e.g., manual changes to system time). The current value of each of these clocks can be retrieved using L<POSIX::RT::Clock>. The handle will be non-blocking by default.
+This creates a new timer object, and returns a file handle that refers to that timer. The clockid argument specifies the clock that is used to mark the progress of the timer, and must be either C<'realtime'> or C<'monotonic'>. C<realtime> is a settable system-wide clock. C<monotonic> is a non-settable clock that is not affected by discontinuous changes in the system clock (e.g., manual changes to system time). The current value of each of these clocks can be retrieved using L<POSIX::RT::Clock>.
 
 =head2 get_timeout()
 
