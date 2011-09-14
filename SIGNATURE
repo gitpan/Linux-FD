@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.63.
+signed via the Module::Signature module, version 0.68.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,28 +14,31 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 a38c6c0eca7083e47587486c9e6bb6b99a29a831 Build.PL
-SHA1 84773095197b74fa773ce5a635cb8c0244c0ed50 Changes
-SHA1 9e627682091372eabbb50d3af3404656d87eb080 LICENSE
-SHA1 0dbde08ae6eabe60388b8cbef610ed73f46ba28c MANIFEST
-SHA1 cf6d6fa37e9d421fa22ac09f644a3c686632609f META.yml
-SHA1 1c950294311e0f07e5e47c80e1632fc0de589298 Makefile.PL
-SHA1 5aff352ba44612f6dceb54ae3e793c5a8452aec5 README
-SHA1 da21a513675a83ab660ba0282561590865200e49 lib/Linux/FD.pm
-SHA1 1c02e7cb2d7625e60734959404730264799c4a71 lib/Linux/FD.xs
-SHA1 c2f9d3a7a5c9cf53a921da893f4d3f48b8ed6f44 lib/Linux/FD/Event.pm
-SHA1 1b755a13545691ddc86ad49732b873db934285a1 lib/Linux/FD/Signal.pm
-SHA1 5be261d1d8a9cb0024088189eeb9a902852fa162 lib/Linux/FD/Timer.pm
-SHA1 531ea090827c012b9d79d280e4ae8d1d8f1982cb t/00-load.t
+SHA1 b79c37edc03a430cc9dbcec32c571ae8c848bd29 Build.PL
+SHA1 22adbcbd02d745f3fe77fb420bcb2350f3210ece Changes
+SHA1 50591b51ebc67c6e33821db383b6fc8d29f63b0e INSTALL
+SHA1 255e4d333d5d1b2d2d1371fdd129c14e25eff531 LICENSE
+SHA1 7be1a5ecda94c5a38bd209b978a1284c8d63e9bc MANIFEST
+SHA1 3715d2f04f132555f930467f09a6f61943e2c25f META.json
+SHA1 4a279fd604008732c0f211b85f88c267df3acc5c META.yml
+SHA1 c581e624c078f7402a16ad5c96162c3299d20057 README
+SHA1 6b2a040679594080e3d5056a31ef0aaefea2eca2 dist.ini
+SHA1 974ffdd8943f7f46a1ffafe6f82cd296263612fb lib/Linux/FD.pm
+SHA1 e9c57fb5efb630f4aa42af5844fc84f144f65702 lib/Linux/FD.xs
+SHA1 cec26baefd13da42bf664bd0a4636c2db4debead lib/Linux/FD/Event.pm
+SHA1 07a18cc3a7d76eddfb8632ba493dae4991bf26c8 lib/Linux/FD/Signal.pm
+SHA1 2acf6ad32fe1958a16233ab0befa60b4b82ca0e6 lib/Linux/FD/Timer.pm
+SHA1 14863e63ebceb712fe78ec64e52543a2e7909716 t/00-compile.t
 SHA1 32317cb746d63bb6fe5a9383024a61e9c657cf33 t/10-events.t
 SHA1 a9890be97e3bc7dda260e5888b1f4102528362ff t/10-signals.t
 SHA1 bd5cff0f9634d244bf3841760d2c1f6d0ee16536 t/10-timers.t
-SHA1 0b1c5a2d59be6bfa7d60c64cd964fea6a0331705 t/pod-coverage.t
-SHA1 640935336dc1123c0069bcf5432bcaedc2cf22d3 t/pod.t
+SHA1 6ea81e3865946a14536f97ccc65fee4b218c8148 t/release-kwalitee.t
+SHA1 9433c240fe590bc404ab68ff63984df763e347ed t/release-pod-coverage.t
+SHA1 b30cbdfaf935017c4568c0c91b242438cb87786e t/release-pod-syntax.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.10 (GNU/Linux)
+Version: GnuPG v1.4.11 (GNU/Linux)
 
-iEYEARECAAYFAkz62/oACgkQTd+EWiaICwo0hgCgmoK2sM+Eu9nr+UsgD6PBnUps
-IrAAoKNsOhob/LevDfcUK477Ayb/ou2Q
-=R5K/
+iEYEARECAAYFAk5xN00ACgkQTd+EWiaICwpW3ACePH1nabP8cLO9CPBvxjirOpF0
+VgwAnjZr7WNN/Bttk3bW5/Vo9TfPatGA
+=9AwT
 -----END PGP SIGNATURE-----

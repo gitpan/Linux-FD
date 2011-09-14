@@ -1,3 +1,10 @@
+#ifndef _GNU_SOURCE
+#	define _GNU_SOURCE
+#endif
+#define GNU_STRERROR_R
+
+#include <string.h>
+
 #include <sys/eventfd.h>
 #include <sys/signalfd.h>
 #include <sys/timerfd.h>
@@ -10,14 +17,14 @@
 #define get_fd(self) PerlIO_fileno(IoOFP(sv_2io(SvRV(self))));
 
 static void get_sys_error(char* buffer, size_t buffer_size) {
-#ifdef _GNU_SOURCE
+#if _POSIX_VERSION >= 200112L
 	const char* message = strerror_r(errno, buffer, buffer_size);
-	if (message != buffer) {
-		memcpy(buffer, message, buffer_size -1);
-		buffer[buffer_size] = '\0';
-	}
+	if (message != buffer)
+		memcpy(buffer, message, buffer_size);
 #else
-	strerror_r(errno, buffer, buffer_size);
+	const char* message = strerror(errno);
+	strncpy(buffer, message, buffer_size - 1);
+	buffer[buffer_size - 1] = '\0';
 #endif
 }
 
@@ -28,15 +35,19 @@ static void S_die_sys(pTHX_ const char* format) {
 }
 #define die_sys(format) S_die_sys(aTHX_ format)
 
-sigset_t* S_sv_to_sigset(pTHX_ SV* sigmask) {
+sigset_t* S_sv_to_sigset(pTHX_ SV* sigmask, const char* name) {
 	if (!SvOK(sigmask))
 		return NULL;
-	if (!SvROK(sigmask) || !sv_isobject(sigmask) || !sv_derived_from(sigmask, "POSIX::SigSet"))
-		Perl_croak(aTHX_ "sigset is not of type POSIX::SigSet");
+	if (!SvROK(sigmask) || !sv_derived_from(sigmask, "POSIX::SigSet"))
+		Perl_croak(aTHX_ "%s is not of type POSIX::SigSet");
+#if PERL_VERSION > 15 || PERL_VERSION == 15 && PERL_SUBVERSION > 2
+	return (sigset_t *) SvPV_nolen(SvRV(sigmask));
+#else
 	IV tmp = SvIV((SV*)SvRV(sigmask));
 	return INT2PTR(sigset_t*, tmp);
+#endif
 }
-#define sv_to_sigset(sigmask) S_sv_to_sigset(aTHX_ sigmask)
+#define sv_to_sigset(sigmask, name) S_sv_to_sigset(aTHX_ sigmask, name)
 
 #define NANO_SECONDS 1000000000
 
@@ -143,7 +154,7 @@ int
 _new_fd(sigmask)
 	SV* sigmask;
 	CODE:
-		RETVAL = signalfd(-1, sv_to_sigset(sigmask), SFD_CLOEXEC);
+		RETVAL = signalfd(-1, sv_to_sigset(sigmask, "signalfd"), SFD_CLOEXEC);
 	OUTPUT:
 		RETVAL
 
@@ -154,7 +165,7 @@ void set_mask(self, sigmask)
 	int fd;
 	CODE:
 	fd = get_fd(self);
-	if(signalfd(fd, sv_to_sigset(sigmask), 0) == -1)
+	if(signalfd(fd, sv_to_sigset(sigmask, "signalfd"), 0) == -1)
 		die_sys("Couldn't set_mask: %s");
 
 SV*

@@ -1,4 +1,7 @@
 package Linux::FD::Signal;
+BEGIN {
+  $Linux::FD::Signal::VERSION = '0.005';
+}
 
 use 5.006;
 
@@ -11,8 +14,6 @@ use IPC::Signal qw/sig_num/;
 use Linux::FD ();
 
 use parent 'IO::Handle';
-
-our $VERSION = '0.004';
 
 const my $fail_fd => -1;
 
@@ -29,7 +30,9 @@ sub new {
 
 1;    # End of Linux::FD::Signal
 
-__END__
+
+
+=pod
 
 =head1 NAME
 
@@ -37,7 +40,7 @@ Linux::FD::Signal - Signal filehandles for Linux
 
 =head1 VERSION
 
-Version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 
@@ -67,56 +70,25 @@ If none of the signals in mask is pending for the process, then the receive eith
 
 The information is returned as a hashref with the following keys: signo, errno, code, pid, uid, fd, tid, band, overrun, trapno, status, int, ptr, utime, stime, address. All of these are returned as integers. Some of them are only useful in certain circumstances, others may not be useful from perl at all.
 
-=head1 AUTHOR
-
-Leon Timmermans, C<< <leont at cpan.org> >>
-
 =head1 SEE ALSO
 
 L<Signal::Mask>
 
-=head1 BUGS
+=head1 AUTHOR
 
-Please report any bugs or feature requests to C<bug-linux-fd at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Linux-FD>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
+Leon Timmermans <leont@cpan.org>
 
-=head1 SUPPORT
+=head1 COPYRIGHT AND LICENSE
 
-You can find documentation for this module with the perldoc command.
+This software is copyright (c) 2010 by Leon Timmermans.
 
-    perldoc Linux::FD::Signal
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Linux-FD>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Linux-FD>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Linux-FD>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Linux-FD/>
-
-=back
-
-=head1 LICENSE AND COPYRIGHT
-
-Copyright 2010 Leon Timmermans.
-
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
-
-See http://dev.perl.org/licenses/ for more information.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
+
+#ABSTRACT: Signal filehandles for Linux
+

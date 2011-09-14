@@ -1,5 +1,10 @@
 Revision history for Linux-FD
 
+0.005     2011-09-15 01:22:49 Europe/Amsterdam
+          Converted to Dist::Zilla
+          Handle 5.15.3's new POSIX::SigSet representation
+          Fix strerror_r usage wrt GNU vs POSIX
+
 0.004   2010-11-26
         Made blocking handles the default again, to avoid confusion
         Reversed module loading, so modules can be loaded separately
