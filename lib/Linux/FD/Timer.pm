@@ -1,6 +1,6 @@
 package Linux::FD::Timer;
-BEGIN {
-  $Linux::FD::Timer::VERSION = '0.005';
+{
+  $Linux::FD::Timer::VERSION = '0.006';
 }
 
 use 5.006;
@@ -27,6 +27,8 @@ sub new {
 
 1;    # End of Linux::FD::Timer
 
+#ABSTRACT: Timer filehandles for Linux
+
 
 
 =pod
@@ -37,7 +39,7 @@ Linux::FD::Timer - Timer filehandles for Linux
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
@@ -70,7 +72,7 @@ Set the timer and interval values. If C<$abstime> is true, they are absolute val
 
 =head2 receive
 
-If the timer has already expired one or more times since its settings were last modified using settime(), or since the last successful wait, then receive returns an unsigned 8-byte integer containing the number of expirations that have occurred. If not it either returns undef or it blocks (if the handle is blocking).
+If the timer has already expired one or more times since its settings were last modified using settime(), or since the last successful wait, then receive returns an unsigned 64-bit integer containing the number of expirations that have occurred. If not it either returns undef or it blocks (if the handle is blocking).
 
 =head1 AUTHOR
 
@@ -87,6 +89,4 @@ the same terms as the Perl 5 programming language system itself.
 
 
 __END__
-
-#ABSTRACT: Timer filehandles for Linux
 

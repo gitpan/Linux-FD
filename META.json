@@ -3,8 +3,8 @@
    "author" : [
       "Leon Timmermans <leont@cpan.org>"
    ],
-   "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200008, CPAN::Meta::Converter version 2.110440",
+   "dynamic_config" : "1",
+   "generated_by" : "Dist::Zilla version 4.300003, CPAN::Meta::Converter version 2.112150",
    "license" : [
       "perl_5"
    ],
@@ -16,7 +16,6 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "ExtUtils::CBuilder" : 0,
             "Module::Build" : "0.3601"
          }
       },
@@ -31,6 +30,7 @@
             "Const::Fast" : 0,
             "IO::Handle" : 0,
             "IPC::Signal" : 0,
+            "List::Util" : 0,
             "Scalar::Util" : 0,
             "Sub::Exporter" : 0,
             "XSLoader" : 0,
@@ -63,6 +63,6 @@
          "web" : "http://github.com/Leont/linux-fd"
       }
    },
-   "version" : "0.005"
+   "version" : "0.006"
 }
 

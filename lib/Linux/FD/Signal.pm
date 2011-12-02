@@ -1,6 +1,6 @@
 package Linux::FD::Signal;
-BEGIN {
-  $Linux::FD::Signal::VERSION = '0.005';
+{
+  $Linux::FD::Signal::VERSION = '0.006';
 }
 
 use 5.006;
@@ -30,6 +30,8 @@ sub new {
 
 1;    # End of Linux::FD::Signal
 
+#ABSTRACT: Signal filehandles for Linux
+
 
 
 =pod
@@ -40,7 +42,7 @@ Linux::FD::Signal - Signal filehandles for Linux
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
@@ -89,6 +91,4 @@ the same terms as the Perl 5 programming language system itself.
 
 
 __END__
-
-#ABSTRACT: Signal filehandles for Linux
 

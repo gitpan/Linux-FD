@@ -2,7 +2,6 @@ use 5.006;
 use strict;
 use warnings;
 use Module::Build;
-use Config;
 
 if ($^O ne 'linux') {
 	print "No support for OS\n";
@@ -12,7 +11,6 @@ if ($^O ne 'linux') {
 my $builder = Module::Build->new(
 	module_name         => 'Linux::FD',
 	  'build_requires' => {
-    'ExtUtils::CBuilder' => '0',
     'File::Find' => '0',
     'File::Temp' => '0',
     'IO::Select' => '0',
@@ -29,6 +27,7 @@ my $builder = Module::Build->new(
     'Const::Fast' => '0',
     'IO::Handle' => '0',
     'IPC::Signal' => '0',
+    'List::Util' => '0',
     'Scalar::Util' => '0',
     'Sub::Exporter' => '0',
     'XSLoader' => '0',

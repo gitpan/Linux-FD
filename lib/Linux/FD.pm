@@ -1,6 +1,6 @@
 package Linux::FD;
-BEGIN {
-  $Linux::FD::VERSION = '0.005';
+{
+  $Linux::FD::VERSION = '0.006';
 }
 
 use 5.006;
@@ -33,6 +33,8 @@ sub timerfd {
 
 1;
 
+#ABSTRACT: Linux specific special filehandles
+
 
 
 =pod
@@ -43,15 +45,21 @@ Linux::FD - Linux specific special filehandles
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 DESCRIPTION
 
 Linux::FD provides you Linux specific special file handles. These are
 
- * Event filehandles
- * Signal filehandles
- * Timer filehandles
+=over 4
+
+=item * Event filehandles
+
+=item * Signal filehandles
+
+=item * Timer filehandles
+
+=back
 
 These allow you to use conventional polling mechanisms to wait for a large variety of events.
 
@@ -84,6 +92,4 @@ the same terms as the Perl 5 programming language system itself.
 
 
 __END__
-
-#ABSTRACT: Linux specific special filehandles
 
