@@ -13,6 +13,7 @@ lib/Linux/FD.xs
 lib/Linux/FD/Event.pm
 lib/Linux/FD/Signal.pm
 lib/Linux/FD/Timer.pm
+lib/Linux/ppport.h
 t/00-compile.t
 t/10-events.t
 t/10-signals.t

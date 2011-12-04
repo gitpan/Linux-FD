@@ -1,6 +1,6 @@
 package Linux::FD;
 {
-  $Linux::FD::VERSION = '0.006';
+  $Linux::FD::VERSION = '0.007';
 }
 
 use 5.006;
@@ -45,7 +45,7 @@ Linux::FD - Linux specific special filehandles
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 DESCRIPTION
 
