@@ -1,6 +1,6 @@
 package Linux::FD;
 {
-  $Linux::FD::VERSION = '0.007';
+  $Linux::FD::VERSION = '0.008';
 }
 
 use 5.006;
@@ -45,7 +45,7 @@ Linux::FD - Linux specific special filehandles
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 DESCRIPTION
 
@@ -65,7 +65,7 @@ These allow you to use conventional polling mechanisms to wait for a large varie
 
 =head1 FUNCTIONS
 
-=head2 eventfd($initial_value)
+=head2 eventfd($initial_value, @flags)
 
 This creates an eventfd handle. See L<Linux::FD::Event> for more information on it.
 

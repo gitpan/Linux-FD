@@ -4,7 +4,7 @@
       "Leon Timmermans <leont@cpan.org>"
    ],
    "dynamic_config" : "1",
-   "generated_by" : "Dist::Zilla version 4.300003, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "Dist::Zilla version 4.300018, CPAN::Meta::Converter version 2.120920",
    "license" : [
       "perl_5"
    ],
@@ -26,28 +26,23 @@
       },
       "runtime" : {
          "requires" : {
-            "Carp" : 0,
-            "Const::Fast" : 0,
-            "IO::Handle" : 0,
-            "IPC::Signal" : 0,
-            "List::Util" : 0,
-            "Scalar::Util" : 0,
-            "Sub::Exporter" : 0,
-            "XSLoader" : 0,
-            "parent" : 0,
+            "IO::Handle" : "0",
+            "Sub::Exporter" : "0",
+            "XSLoader" : "0",
+            "parent" : "0",
             "perl" : "5.006",
-            "strict" : 0,
-            "warnings" : 0
+            "strict" : "0",
+            "warnings" : "0"
          }
       },
       "test" : {
          "requires" : {
-            "File::Find" : 0,
-            "File::Temp" : 0,
-            "IO::Select" : 0,
-            "POSIX" : 0,
-            "Test::More" : 0,
-            "Time::HiRes" : 0
+            "File::Find" : "0",
+            "File::Temp" : "0",
+            "IO::Select" : "0",
+            "POSIX" : "0",
+            "Test::More" : "0",
+            "Time::HiRes" : "0"
          }
       }
    },
@@ -63,6 +58,6 @@
          "web" : "http://github.com/Leont/linux-fd"
       }
    },
-   "version" : "0.007"
+   "version" : "0.008"
 }
 

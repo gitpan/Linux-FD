@@ -6,7 +6,6 @@ MANIFEST
 META.json
 META.yml
 README
-SIGNATURE
 dist.ini
 lib/Linux/FD.pm
 lib/Linux/FD.xs

@@ -1,5 +1,9 @@
 Revision history for Linux-FD
 
+0.008     2012-07-06 15:19:20 Europe/Bucharest
+          Move some code from Perl to XS, mixing was more complicated.
+          Improve strerror_r detection
+
 0.007     2011-12-04 13:10:14 Europe/Amsterdam
           Improve compatibility with legacy perl versions
           Fixed C89 compatibility

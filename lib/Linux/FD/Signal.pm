@@ -1,39 +1,22 @@
 package Linux::FD::Signal;
 {
-  $Linux::FD::Signal::VERSION = '0.007';
+  $Linux::FD::Signal::VERSION = '0.008';
 }
 
 use 5.006;
 
 use strict;
 use warnings FATAL => 'all';
-use Carp qw/croak/;
-use Const::Fast;
-use Scalar::Util qw/blessed/;
-use IPC::Signal qw/sig_num/;
 use Linux::FD ();
 
 use parent 'IO::Handle';
-
-const my $fail_fd => -1;
-
-sub new {
-	my ($class, $sigmask) = @_;
-
-	my $sigset = blessed($sigmask) && $sigmask->isa('POSIX::SigSet') ? $sigmask : POSIX::SigSet->new(sig_num($sigmask));
-	my $fd = _new_fd($sigset);
-	croak "Can't open signalfd descriptor: $!" if $fd == $fail_fd;
-	open my $fh, '+<&', $fd or croak "Can't fdopen($fd): $!";
-	bless $fh, $class;
-	return $fh;
-}
 
 1;    # End of Linux::FD::Signal
 
 #ABSTRACT: Signal filehandles for Linux
 
 
-
+__END__
 =pod
 
 =head1 NAME
@@ -42,7 +25,7 @@ Linux::FD::Signal - Signal filehandles for Linux
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 SYNOPSIS
 
@@ -88,7 +71,4 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
 

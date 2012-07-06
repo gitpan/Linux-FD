@@ -23,12 +23,7 @@ my $builder = Module::Build->new(
     'Module::Build' => '0.3601'
   },
   'requires' => {
-    'Carp' => '0',
-    'Const::Fast' => '0',
     'IO::Handle' => '0',
-    'IPC::Signal' => '0',
-    'List::Util' => '0',
-    'Scalar::Util' => '0',
     'Sub::Exporter' => '0',
     'XSLoader' => '0',
     'parent' => '0',
