@@ -1,6 +1,6 @@
 package Linux::FD::Signal;
 {
-  $Linux::FD::Signal::VERSION = '0.008';
+  $Linux::FD::Signal::VERSION = '0.009';
 }
 
 use 5.006;
@@ -25,7 +25,7 @@ Linux::FD::Signal - Signal filehandles for Linux
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

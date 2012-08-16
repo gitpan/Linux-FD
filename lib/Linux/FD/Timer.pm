@@ -1,6 +1,6 @@
 package Linux::FD::Timer;
 {
-  $Linux::FD::Timer::VERSION = '0.008';
+  $Linux::FD::Timer::VERSION = '0.009';
 }
 
 use 5.006;
@@ -25,7 +25,7 @@ Linux::FD::Timer - Timer filehandles for Linux
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

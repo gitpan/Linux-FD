@@ -16,7 +16,8 @@ my $builder = Module::Build->new(
     'IO::Select' => '0',
     'Module::Build' => '0.3601',
     'POSIX' => '0',
-    'Test::More' => '0',
+    'Test::Exception' => '0',
+    'Test::More' => '0.89',
     'Time::HiRes' => '0'
   },
   'configure_requires' => {

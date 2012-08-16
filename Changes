@@ -1,5 +1,8 @@
 Revision history for Linux-FD
 
+0.009     2012-08-16 12:29:53 Europe/Amsterdam
+          Allocate sigset buffer correctly
+
 0.008     2012-07-06 15:19:20 Europe/Bucharest
           Move some code from Perl to XS, mixing was more complicated.
           Improve strerror_r detection
