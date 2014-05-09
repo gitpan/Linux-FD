@@ -1,5 +1,9 @@
 Revision history for Linux-FD
 
+0.010     2014-05-10 00:08:30CEST+0200 Europe/Amsterdam
+          Run signal handlers ASAP
+          Move all remaining pure-perl code to xs
+
 0.009     2012-08-16 12:29:53 Europe/Amsterdam
           Allocate sigset buffer correctly
 

@@ -1,8 +1,5 @@
 package Linux::FD;
-{
-  $Linux::FD::VERSION = '0.009';
-}
-
+$Linux::FD::VERSION = '0.010';
 use 5.006;
 
 use strict;
@@ -13,31 +10,15 @@ use Sub::Exporter -setup => { exports => [qw/eventfd signalfd timerfd/] };
 use XSLoader;
 XSLoader::load(__PACKAGE__, __PACKAGE__->VERSION);
 
-sub eventfd {
-	my @args = @_;
-	require Linux::FD::Event;
-	return Linux::FD::Event->new(@args);
-}
-
-sub signalfd {
-	my @args = @_;
-	require Linux::FD::Signal;
-	return Linux::FD::Signal->new(@args);
-}
-
-sub timerfd {
-	my @args = @_;
-	require Linux::FD::Timer;
-	return Linux::FD::Timer->new(@args);
-}
-
 1;
 
 #ABSTRACT: Linux specific special filehandles
 
-
+__END__
 
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -45,7 +26,7 @@ Linux::FD - Linux specific special filehandles
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 DESCRIPTION
 
@@ -89,7 +70,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

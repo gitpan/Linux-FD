@@ -1,23 +1,20 @@
 package Linux::FD::Timer;
-{
-  $Linux::FD::Timer::VERSION = '0.009';
-}
-
+$Linux::FD::Timer::VERSION = '0.010';
 use 5.006;
 
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 use Linux::FD ();
-
-use parent 'IO::Handle';
 
 1;    # End of Linux::FD::Timer
 
 #ABSTRACT: Timer filehandles for Linux
 
-
 __END__
+
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -25,7 +22,7 @@ Linux::FD::Timer - Timer filehandles for Linux
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 SYNOPSIS
 
@@ -72,4 +69,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
