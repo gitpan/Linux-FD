@@ -10,6 +10,7 @@
 #include <sys/timerfd.h>
 
 #define PERL_NO_GET_CONTEXT
+#define PERL_REENTR_API 1
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
@@ -17,28 +18,7 @@
 
 #define get_fd(self) PerlIO_fileno(IoOFP(sv_2io(SvRV(self))));
 
-static void get_sys_error(char* buffer, size_t buffer_size) {
-#if HAVE_STRERROR_R
-#	if STRERROR_R_PROTO == REENTRANT_PROTO_B_IBW
-	const char* message = strerror_r(errno, buffer, buffer_size);
-	if (message != buffer)
-		memcpy(buffer, message, buffer_size);
-#	else
-	strerror_r(errno, buffer, buffer_size);
-#	endif
-#else
-	const char* message = strerror(errno);
-	strncpy(buffer, message, buffer_size - 1);
-	buffer[buffer_size - 1] = '\0';
-#endif
-}
-
-static void S_die_sys(pTHX_ const char* format) {
-	char buffer[128];
-	get_sys_error(buffer, sizeof buffer);
-	Perl_croak(aTHX_ format, buffer);
-}
-#define die_sys(format) S_die_sys(aTHX_ format)
+#define die_sys(format) Perl_croak(aTHX_ format, strerror(errno))
 
 static sigset_t* S_sv_to_sigset(pTHX_ SV* sigmask, const char* name) {
 	IV tmp;
@@ -157,15 +137,15 @@ static UV S_get_event_flag(pTHX_ SV* flag_name) {
 static SV* S_new_eventfd(pTHX_ const char* classname, UV initial, int flags) {
 	int fd = eventfd(initial, flags);
 	if (fd < 0)
-		die_sys(aTHX_ "Can't open eventfd descriptor: %s");
+		die_sys("Can't open eventfd descriptor: %s");
 	return io_fdopen(fd, classname);
 }
 #define new_eventfd(classname, initial, flags) S_new_eventfd(aTHX_ classname, initial, flags)
 
-static SV* S_new_signalfd(aTHX_ const char* classname, SV* sigmask) {
+static SV* S_new_signalfd(pTHX_ const char* classname, SV* sigmask) {
 	int fd = signalfd(-1, get_sigset(sigmask, "signalfd"), SFD_CLOEXEC);
 	if (fd < 0)
-		die_sys(aTHX_ "Can't open signalfd descriptor: %s");
+		die_sys("Can't open signalfd descriptor: %s");
 	return io_fdopen(fd, classname);
 }
 #define new_signalfd(classname, sigset) S_new_signalfd(aTHX_ classname, sigset)
@@ -174,7 +154,7 @@ static SV* S_new_timerfd(pTHX_ const char* classname, SV* clock, const char* fun
 	clockid_t clock_id = SvROK(clock) ? get_clock(clock, funcname) : get_clockid(SvPV_nolen(clock));
 	int fd = timerfd_create(clock_id, TFD_CLOEXEC);
 	if (fd < 0)
-		die_sys(aTHX_ "Can't open timerfd descriptor: %s");
+		die_sys("Can't open timerfd descriptor: %s");
 	return io_fdopen(fd, classname);
 }
 #define new_timerfd(classname, clock, func) S_new_timerfd(aTHX_ classname, clock, func)

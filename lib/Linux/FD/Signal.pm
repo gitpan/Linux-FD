@@ -1,5 +1,8 @@
 package Linux::FD::Signal;
-$Linux::FD::Signal::VERSION = '0.010';
+{
+  $Linux::FD::Signal::VERSION = '0.011';
+}
+
 use 5.006;
 
 use strict;
@@ -14,15 +17,13 @@ __END__
 
 =pod
 
-=encoding UTF-8
-
 =head1 NAME
 
 Linux::FD::Signal - Signal filehandles for Linux
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 

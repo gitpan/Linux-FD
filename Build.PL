@@ -11,7 +11,6 @@ if ($^O ne 'linux') {
 my $builder = Module::Build->new(
 	module_name         => 'Linux::FD',
 	  'build_requires' => {
-    'File::Spec' => '0',
     'IO::Handle' => '0',
     'IO::Select' => '0',
     'IPC::Open3' => '0',

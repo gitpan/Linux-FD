@@ -1,5 +1,8 @@
 Revision history for Linux-FD
 
+0.011     2014-05-11 13:08:16 Europe/Amsterdam
+          Fix various compilation issues on threaded perls
+
 0.010     2014-05-10 00:08:30CEST+0200 Europe/Amsterdam
           Run signal handlers ASAP
           Move all remaining pure-perl code to xs
